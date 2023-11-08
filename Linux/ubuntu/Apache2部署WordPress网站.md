@@ -39,7 +39,7 @@ apt-get install php libapache2-mod-php
 
 > 如果不购买域名，也可以通过主机ip地址连接到网站
 
-## 更改Apache的默认根目录
+## 更改Apache的默认根目录(可选)
 
 1.创建这个目录
 
@@ -166,4 +166,3 @@ wget WordPress下载链接
 
 > - 可能会出现无法创建wp-config.php文件，此时按提示在网站根目录手动创建并将WordPress的内容放在即可
 > - 如果创建失败，检查数据库相关问题
->
