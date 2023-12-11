@@ -1,17 +1,4 @@
 部分选项只做参考，可根据实际情况修改
-
-## 获取本机外网IP地址
-
-```shell
-wget -qO - icanhazip.com
-```
-
-返回本机外网ip号
-
-```shell
-xxx.xxx.xxx.xxx
-```
-
 ## 下载自动部署脚本
 
 ```shell
@@ -19,12 +6,6 @@ curl -O https://raw.githubusercontent.com/angristan/openvpn-install/master/openv
 ```
 
 ## 运行自动部署脚本
-
-授予部署权限
-
-```shell
-chmod +x openvpn-install.sh
-```
 
 运行自动部署脚本脚本
 
