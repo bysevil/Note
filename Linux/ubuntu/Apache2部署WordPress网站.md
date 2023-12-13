@@ -24,10 +24,13 @@ apt-get install apache2
 
 ```shell
 apt-get install php
+```
+5.安装php连接mysql的插件
+```
 apt-get -y install php-fpm php-mysql
 ```
 
-由于Apache2 可能不能正常解析PHP，因此需要安装PHP针对于apache的模块
+6.由于Apache2 可能不能正常解析PHP，因此需要安装PHP针对于apache的模块
 
 ```shell
 apt-get install php libapache2-mod-php
@@ -35,7 +38,7 @@ apt-get install php libapache2-mod-php
 
 此时软件均安装完成
 
-5.购买一个域名并解析到服务器（可选）
+7.购买一个域名并解析到服务器（可选）
 
 > 如果不购买域名，也可以通过主机ip地址连接到网站
 
@@ -50,7 +53,7 @@ sudo mkdir -p /var/www/网站域名
 > 建议使用网站域名做网站的根目录名称，如
 >
 > ```shell
-> sudo mkdir -p /var/www/baidu,com
+> sudo mkdir -p /var/www/baidu.com
 > ```
 
 2.授予相关权限
