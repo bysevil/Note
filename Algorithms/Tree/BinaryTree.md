@@ -106,5 +106,143 @@ void levelOrder(BTNode* Node){
 }
 ```
 
-## 从序列创建二叉树
+## 二叉树的常见操作
+### 从前序序列创建二叉树
+创建新节点
+```c
+BTNode* BuyBTNode(BTDataType data) {
+    BTNode* Node = malloc(sizeof(BTNode));
+    assert(Node);
+    Node->_data = data;
+    Node->_left = NULL;
+    Node->_right = NULL;
+    return Node;
+}
+```
 
+递归的创建树
+```c
+BTNode* _BinaryTreeCreate(BTDataType* PreOrderStr, int n, int* pi) {
+    if (*pi >= n) {
+        return NULL;
+    }
+    if (PreOrderStr[*pi] == '#') {
+        (*pi)++;
+        return NULL;
+    }
+    BTNode* root = BuyBTNode(PreOrderStr[(*pi)]);
+    (*pi)++;
+    root->_left = _BinaryTreeCreate(PreOrderStr, n, pi);
+    root->_right = _BinaryTreeCreate(PreOrderStr, n, pi);
+    return root;
+}
+```
+主要用来创建pi，可以在调用时不手动创建
+```c
+BTNode* BinaryTreeCreate(BTDataType* PreOrderStr, int n) {
+    int pi = 0;
+    return _BinaryTreeCreate(PreOrderStr, n, &pi);
+}
+```
+### 二叉树的节点数
+
+二叉树的节点数 = 根节点 + 左树的节点数 + 右树的节点数
+```c
+int BinaryTreeSize(BTNode* root) {
+    if (root == NULL) {
+        return 0;
+    }
+    return BinaryTreeSize(root->_left) + BinaryTreeSize(root->_right) + 1;
+}
+```
+### 二叉树的叶子数
+
+二叉树的叶子数 = 左树的叶子数 + 右树的叶子数
+
+叶子的特征 ：没有子节点
+```c
+int BinaryTreeLeafSize(BTNode* root) {
+    if (root == NULL) 
+        return 0;
+
+    if (root->_left == NULL && root->_right == NULL) 
+        return 1;
+    
+
+    return 
+		BinaryTreeLeafSize(root->_left) +
+		BinaryTreeLeafSize(root->_right);
+}
+```
+### 二叉树是否为完全二叉树
+
+层序遍历二叉树，如果遇到空节点后又遇到有效节点，则这个树不是完全二叉树
+```c
+bool BinaryTreeComplete(BTNode* root){
+    Queue* Q = QueueCreate(root);
+    while(!QueueEmpty(Q)){
+        BTNode* Node = QueuePop(Q);
+        if(Node == NULL)
+            break;
+        QueuePush(Q, Node->_left);
+        QueuePush(Q, Node->_right);
+    }
+
+    while(!QueueEmpty(Q)){
+        BTNode* Node = QueuePop(Q);
+        if(Node != NULL)
+            return false;
+    }
+
+    return true;
+}
+```
+### 二叉树查找节点
+前序遍历，遇到目标返回目标地址，否则返回空。返回空时继续查找，直到遍历结束。
+```c
+BTNode* BinaryTreeFind(BTNode* root, BTDataType x) {
+    if (root == NULL)
+        return NULL;
+
+    if (root->_data == x)
+        return root;
+
+    BTNode* left = BinaryTreeFind(root->_left, x);
+    if (left)
+        return left;
+    return BinaryTreeFind(root->_right, x);
+}
+
+```
+### 二叉树的深度
+二叉树的深度 = 左树的深度和右树的深度最大的那个+1
+```c
+int BinaryTreeDepth(BTNode*root){
+    if(root == NULL)
+        return 0;
+    int left = BinaryTreeDepth(root->_left);
+    int right = BinaryTreeDepth(root->_right);
+
+    return left > right ? left + 1 : right + 1;
+}
+```
+### 二叉树第K层的节点数
+
+二叉树k层的节点数 = 左树的k-1层的节点数 + 右树的k-1层的节点数
+```c
+int BinaryTreeLevelKSize(BTNode* root, int k) {
+    if (root == NULL)
+        return 0;
+    if (k == 0)
+        return 1;
+
+    return BinaryTreeLevelKSize( root->_left, k-1) + BinaryTreeLevelKSize(root->_right, k - 1);
+}
+```
+### 二叉树的销毁
+```c
+void BinaryTreeDestory(BTNode** root) {
+    _BinaryTreeDestory(*root);
+    *root = NULL;
+}
+```
