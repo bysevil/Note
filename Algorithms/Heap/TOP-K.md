@@ -23,7 +23,7 @@ Heap* TopK(int* nums, int n, int k){
 	Heap* hp = HeapCreate(nums, k);
 	//用剩余数依次比较
 	for(int i = k; i< n ;i++){
-		if(nums[i] > HeapTop(hp)){
+		if(nums[i] < HeapTop(hp)){
 			//新数与堆顶交换
 			hp->data[0] = nums[i];
 			//向下调整堆顶数据
