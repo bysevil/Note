@@ -39,7 +39,7 @@ AVL树又叫高度平衡搜索二叉树，其是对搜索二叉树的优化，�
 	3. 更新平衡因子
 		1. $parent = 0$
 		3. $parent->left = -( parnet->left->right )$
-		4. $parent->left = 0$
+		4. $parent->left->right = 0$
 4. 先右后左双旋（ $parent= 2 \land cur = -1$)
 	1. $parent->right = oldRoot$
 		1. 右单旋一次
@@ -48,5 +48,5 @@ AVL树又叫高度平衡搜索二叉树，其是对搜索二叉树的优化，�
 	3. 更新平衡因子
 		1. $parent = 0$
 		3. $parent->right = -( parnet->right->left )$
-		4. $parent->left = 0$
+		4. $parent->right->left = 0$
 
