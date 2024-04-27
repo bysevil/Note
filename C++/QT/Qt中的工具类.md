@@ -8,6 +8,10 @@
 timeout->start(1000);
 ```
 
+停止计时器
+```C++
+timeout->stop();
+```
 ## Pixmap 图片
 
 Pixmap可以导入外部图片资源
@@ -89,3 +93,13 @@ Qt::FocusPolicy focusPolicy()
 - Qt::ClickFocus：控件可以通过鼠标点击成为焦点
 - Qt::strongFoucs：控件既可以通过鼠标，也可以通过tab成为焦点
 - Qt::wheelFocus：控件可以通过鼠标滚轮成为焦点（新增，较少使用）
+
+## QDate 日期
+
+
+可以将日期转换为String型号
+
+```C++
+QDate date;
+date.to_string();
+```
