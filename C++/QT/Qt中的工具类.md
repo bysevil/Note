@@ -103,3 +103,22 @@ Qt::FocusPolicy focusPolicy()
 QDate date;
 date.to_string();
 ```
+
+## QRegExp 正则表达式
+
+保存正则表达式
+```C++
+QRegExp regExp("正则表达式");
+```
+
+## QCursur 鼠标光标
+
+## QTextCursur 输入框文本光标
+
+```C++
+QTextCursur testCursur;
+//获取文本光标位置
+testCursur->position();
+//获取光标选中的文本
+testCursur->selectedText();
+```
