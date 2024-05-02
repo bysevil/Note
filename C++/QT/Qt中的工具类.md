@@ -1,4 +1,23 @@
+## Qt容器与std容器
 
+qt诞生于91年，98年C++标准才规定使用QLabel风格的头文件，在之前，都是qlabel.h风格的头文件，建议使用标准的头文件，即使旧的文件可用。
+
+在设置时，要注意qt自己的轮子，在qt诞生的91年，c++还没有标准，更没有STL库。所以qt自己造了一套轮子，如QString，QVector,QList,QMap。但是在实际使用时，我们即可以使用STL的容器，也可以使用Qt自己造的，两者大部分情况可以混用。
+
+如setText的参数类型就是QString，但我们传入的是C风格字符串
+
+ QString有时优于std::String 他对字符编码进行了处理，以进行国际化和本土化。
+
+QString和std::string可以互转
+
+```C++
+//std::string转Qstring
+Qstring Qstr = Qstring::fromStdString(std::string);
+
+//Qstring转std::string
+std::string = Qstr.toStdString();
+```
+ 
 ## QTimer 定时器
 
 定时器对象，启动后会每隔一段时间发送timeout信号
@@ -94,16 +113,24 @@ Qt::FocusPolicy focusPolicy()
 - Qt::strongFoucs：控件既可以通过鼠标，也可以通过tab成为焦点
 - Qt::wheelFocus：控件可以通过鼠标滚轮成为焦点（新增，较少使用）
 
-## QDate 日期
+## QDateTime 日期类
 
+QDate 日期类 QTime 时间类 QDateTime 日期时间类
 
-可以将日期转换为String型号
+可以将日期转换为String型
 
 ```C++
 QDate date;
 date.to_string();
 ```
 
+计算时间日期的差值，
+```C++
+QDateTime dateTime;
+int day = dateTime.daysTo(QDateTime); //计算两个日期的差值（单位为天）
+int secsonds = dateTime.secsTo(QDateTime); // 计算两个日期的插值(单位为秒)
+```
+> 注意daysTo函数，只要跨过12点就是隔了一天。如2000/1/1 23:59 到2000/1/2 00:01 就算是已经相隔一天。即使两个时间只相隔1分钟。
 ## QRegExp 正则表达式
 
 保存正则表达式
@@ -121,4 +148,28 @@ QTextCursur testCursur;
 testCursur->position();
 //获取光标选中的文本
 testCursur->selectedText();
+```
+
+### QKeySequence 按键序列
+
+这个类是一个键盘按键序列,表示一个或多个按键
+
+可以通过字符串来初始化
+```C++
+QKeySequence("Ctrl+1")
+```
+
+或是通过按键枚举
+```C++
+QkeySequence(Qt::CLRL + Qt::key_K);
+```
+
+## QShortcut
+
+QShortcut可以绑定一个键盘按键，当按下此按键时触发信号`Qshortcut::activated`
+
+```C++
+QShortcut* shortcur = new QShortcut(this);
+
+QShortcut->setKey(QkeySequence);
 ```
