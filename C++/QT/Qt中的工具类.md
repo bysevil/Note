@@ -164,7 +164,7 @@ QKeySequence("Ctrl+1")
 QkeySequence(Qt::CLRL + Qt::key_K);
 ```
 
-## QShortcut
+## QShortcut 快捷键
 
 QShortcut可以绑定一个键盘按键，当按下此按键时触发信号`Qshortcut::activated`
 
