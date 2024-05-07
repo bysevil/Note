@@ -173,3 +173,21 @@ QShortcut* shortcur = new QShortcut(this);
 
 QShortcut->setKey(QkeySequence);
 ```
+
+## MosueEvent 鼠标事件
+
+作为处理鼠标事件的参数传入，以处理各种鼠标事件
+
+- real x 事件发生时的鼠标x轴位置 (坐标原点为控件左上角)
+- real y 事件发生时的鼠标y轴位置 (坐标原点为控件左上角)
+- int botton 鼠标按下的按键，是一个枚举值
+	- Qt::LeftButton 左键
+	- Qt::rightButton 右键
+
+x() 获取事件发生时的鼠标x轴位置 (坐标原点为控件左上角)
+y() 获取事件发生时的鼠标y轴位置 (坐标原点为控件左上角)
+globalx(); 获取事件发生时的鼠标x轴位置 (坐标原点为屏幕左上角）
+globaly(); 获取事件发生时的鼠标y轴位置 (坐标原点为屏幕左上角）
+event->botton() 获取事件发生时的鼠标按下的按键。
+
+
