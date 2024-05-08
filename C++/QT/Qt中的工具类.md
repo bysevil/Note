@@ -17,6 +17,11 @@ Qstring Qstr = Qstring::fromStdString(std::string);
 //Qstring转std::string
 std::string = Qstr.toStdString();
 ```
+
+QString 也可以转换成C风格的空终止字符字符串
+```C++
+strint.toUtf8();
+```
  
 ## QTimer 定时器
 
