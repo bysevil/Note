@@ -36,7 +36,7 @@ timeout->start(1000);
 ```C++
 timeout->stop();
 ```
-## Pixmap 图片
+## Pixmap 显示图片
 
 Pixmap可以导入外部图片资源
 ```C++
@@ -44,6 +44,9 @@ Qpixmap pixmap(":/1.jpg");// 导入图片文件
 pixmap = pixmap.scalec(x,y);//缩放图片
 ```
 
+QImage 图片IO类，进行像素级编辑
+QBitmap 
+QPicture 录制QPainter绘制操作
 ## QRect 控件大小位置类
 
  QRect类，包含了控件的位置（x,y）坐标，大小（width,height）宽高。
