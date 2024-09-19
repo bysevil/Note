@@ -1,10 +1,12 @@
 部分选项只做参考，可根据实际情况修改
+
 ## 下载自动部署脚本
 
 ```shell
 curl -O https://raw.githubusercontent.com/angristan/openvpn-install/master/openvpn-install.sh
 ```
 
+>自动部署脚本成功运行需要服务器能连接到github，国内服务器可以通过修改hosts文件的方式成功连接
 ## 运行自动部署脚本
 
 运行自动部署脚本脚本

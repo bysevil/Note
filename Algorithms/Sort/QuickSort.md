@@ -18,17 +18,16 @@
 void MidKey(int* nums, int left, int right){
 	int mid = left + rand() % (right - left);
 	if(nums[left] < nums[mid]){
-		if(nums[mid] < nums[right])//left < mid < right
+		if(nums[mid] < nums[right])// left < mid < right
 			swap(nums+left,nums+mid);
 		if(nums[right] > nums[left])
-			swap(nums+left,nums+mid);//left < right < mid
-			
+			swap(nums+left,nums+mid);// left < right < mid	
 	}
 	if(nums[left] > nums[mid]){
 		if(nums[mid] > nums[right])
-			swap(nums+left,nums+mid)//right < mid < left
+			swap(nums+left,nums+mid)// right < mid < left
 		if(nums[left] > nums[right])
-			swap(nums+left,nums+right)//mid < right < left
+			swap(nums+left,nums+right)// mid < right < left
 	}
 }
 ```
