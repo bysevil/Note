@@ -24,8 +24,6 @@ int socket(int domain, int type, int protocol);
 	- IPPROTO_SCTP（STCP传输协议）
 	- IPPROTO_TIPC等（TIPC传输协议）
 ## 2. 绑定本机地址
-
-
 在接口上，统一使用`struct sockaddr`类型表示三种地址类型，在底层自行分析具体是那种套接字，通过其sin_fimaily成员分析其具体为哪种套接字。
 （sockaddr_in）
 创建地址信息对象并填写本机地址信息
@@ -38,7 +36,7 @@ sockaddr.sin_port = htons(22) // 指定端口,如22
 sockaddr.sin_addr.s_addr = inet_addr("127.0.0.1")//指定本机ip，如127.0.0.1
 ```
 >htons能够将数据转换为网络字节序存储，避免大小端问题
->inetaddr能将形如`127.0.0.1`的点分十进制字符串描述的IP地址转换为4字节整形
+>inet_addr能将形如`127.0.0.1`的点分十进制字符串描述的IP地址转换为4字节整形
 
 绑定主机信息至Socket
 ```C
@@ -59,6 +57,8 @@ int bind(int sockfd, const struct sockaddr *addr, socklen_t addrlen);
 1023以后的部分端口也由固定协议绑定如：mysql：3306
 
 云服务器禁止直接绑定公网IP，而是需要绑定`0.0.0.0`。这称作任意地址绑定，此时绑定了主机所持有的所有ip，根据端口号向上解包。
+
+>但云服务器能绑定127.0.0.1进行本地通信
 
 客户端端需要绑定本机ip和端口，但是不需要程序员手动绑定。而是由OS在第一次发送信息时自动绑定。
 客户端的port不重要，只要保证其在clinet端的唯一性即可

@@ -93,7 +93,7 @@ int strncmp( const char *lhs, const char *rhs, size_t count);
 ```c
 char* strcpy(char* dest, const char* src)
 ```
-作用：将形参`src`所指向的字符串，复制给形参`dest`所指向的字符串
+作用：将形参`src`所指向的字符串（包含\\0)，复制给形参`dest`所指向的字符数组
 
 返回值：`dest`的副本
 
